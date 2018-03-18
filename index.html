@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+
+    <title>StudMent</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/main.css" media="screen" />
+    <script type="text/javascript" src="js/main.js"></script>
+
+</head>
+<body id="myPage" data-spy="scroll"  data-offset="60">
+
+
+<div class="jumbotron text-center">
+    <h1>StudMent</h1>
+    <p>Finde einen Mentor für dein Problemfach!</p>
+</div>
+
+
+    <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <h4>Finde gute Nachhilfelehrer aus deiner Nähe</h4>
+            </div>
+            <div class="item">
+                <h4>Probleme mit Mathe? Einfach einen Mentor kontaktieren</h4>
+            </div>
+            <div class="item">
+                <h4>Test test</h4>
+            </div>
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+
+
+    <!-- Container (Portfolio Section) -->
+    <div id="portfolio" class="container-fluid slide bg-grey text-center">
+
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="collapse" data-target="#chooseSubject" aria-haspopup="true" aria-expanded="false">
+                F&uuml;r welches Fach ben&ouml;tigst du Nachhilfe?
+            </button>
+
+            <div id="chooseSubject" class="collapse">
+                    <select id="subjectList" onclick="getSelectSubject();" multiple>
+                        <option class="subjectListPoint" value="Mathe" >Mathe</option>
+                        <option class="subjectListPoint" value="BWL" >BWL</option>
+                        <option class="subjectListPoint" value="Informatik" >Informatik</option>
+                    </select>
+            </div>
+         <p id="sub" class="selectedElement"></p>
+        </div>
+
+
+    </div>
+
+
+    <footer class="container-fluid text-center">
+        <a href="index.html" title="Wieder zum Anfang">
+            <span class="glyphicon glyphicon-chevron-up"></span>
+        </a>
+        <a href="index.html" title="Wieder zum Anfang">StudMent</a>
+    </footer>
+
+
+</body>
+</html>
