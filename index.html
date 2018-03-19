@@ -58,19 +58,48 @@
 
 
     <!-- Container (Portfolio Section) -->
-    <div id="portfolio" class="container-fluid slide bg-grey text-center">
+    <div id="boxOne" class="container-fluid slide bg-grey text-center">
 
-            <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="collapse" data-target="#chooseSubject" aria-haspopup="true" aria-expanded="false">
-                F&uuml;r welches Fach ben&ouml;tigst du Nachhilfe?
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="collapse" data-target="#createAppointment" aria-haspopup="true" aria-expanded="false" id="quesBtn">
+                Vereinbare einen Termin bei einem Nachhilfelehrer!
             </button>
 
-            <div id="chooseSubject" class="collapse">
-                    <select id="subjectList" onclick="getSelectSubject();" multiple>
-                        <option class="subjectListPoint" value="Mathe" >Mathe</option>
-                        <option class="subjectListPoint" value="BWL" >BWL</option>
-                        <option class="subjectListPoint" value="Informatik" >Informatik</option>
-                    </select>
+        <div id="createAppointment" class="collapse">
+            <h2>Zunächst benötigen  deine Daten</h2>
+             Vorname:  <input type="text" id="vorName">
+             Nachname: <input type="text" id="nachName" >
+             PLZ: <input type="text" id="plz">
+             Stadt: <input type="text" id="stadt">
+            <hr>
+            <h2>Für welches Fach benötigst du Nachhilfe?</h2>
+            Studiengang:
+            <select id="selectSubject" >
+                <option value=" "> </option>
+                <option value="Mathe">Mathe</option>
+                <option value="BWL">BWL</option>
+                <option value="Informatik">Informatik</option>
+                <option value="Bauingenieur">Bauingenieur</option>
+            </select>
+
+            <div id="searchMentor">
+                <p id="demo"></p>
+                <table id="customers">
+                    <tr>
+                        <th>Name</th>
+                        <th>Fächer</th>
+                        <th>Kontaktieren</th>
+                    </tr>
+                    <tr>
+                        <td>Max Mustermann</td>
+                        <td>Informatik | BWL </td>
+                        <td>x</td>
+                    </tr>
+
+                </table>
             </div>
+        </div>
+
+
          <p id="sub" class="selectedElement"></p>
         </div>
 
@@ -79,6 +108,8 @@
 
 
     <footer class="container-fluid text-center">
+
+
         <a href="index.html" title="Wieder zum Anfang">
             <span class="glyphicon glyphicon-chevron-up"></span>
         </a>

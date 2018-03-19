@@ -10,6 +10,7 @@ h2 {
     font-weight: 600;
     margin-bottom: 30px;
 }
+
 h4 {
     font-size: 19px;
     line-height: 1.375em;
@@ -31,6 +32,54 @@ h4 {
     background-color: #f6f6f6;
 }
 
+/*======================================================================================================================
+                                             Ausgabe-Tabelle
+ =====================================================================================================================*/
+
+#searchMentor{
+    margin-left: 30%;
+}
+
+#customers {
+    border-collapse: collapse;
+    width: 50%;
+}
+
+#customers td, #customers th {
+    border: 1px solid #000;
+    padding: 8px;
+}
+
+#customers tr:nth-child(even){
+    background-color: #f2f2f2;
+    color:#000;
+}
+
+#customers tr:hover {
+    color:#FFF;
+    background-color: #9FAA22;
+}
+
+#customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #D8DD9F;
+    color: #000;
+}
+
+/*======================================================================================================================
+                                             Ausgabe-Tabelle
+ =====================================================================================================================*/
+#selectSubject{
+    color:#000;
+    width: 10%;
+    height: 32px;
+    border: none;
+}
+/*======================================================================================================================
+                                             Karusell-Effekt
+ =====================================================================================================================*/
 
 .carousel-control.right, .carousel-control.left {
     background-image: none;
@@ -84,17 +133,26 @@ h4 {
 }
 .panel-footer .btn {
     margin: 15px 0;
-    background-color: #9FAA22;
+    background: #9FAA22;
     color: #fff;
 }
 
-#chooseSubject{
-    margin: 0 auto;
-    padding-top: 10px;
-    position: relative;
-    width: 400px;
+/*======================================================================================================================
+                                             Eigene Panels/Div
+ =====================================================================================================================*/
+#boxOne{
+    background-color: #D8DD9F;
 }
 
+
+#createAppointment{
+    margin-top:10px;
+    width:100%;
+    background: #9FAA22;
+    padding: 10px;
+    text-align: left;
+    color: #FFF;
+}
 
 #subjectList{
     border:0px;
@@ -123,12 +181,17 @@ h4 {
 .selectedElement{
     font-size: 20px;
     line-height: 1.375em;
-
     color: #9FAA22;
 }
 
+#quesBtn{
+    background: #777868;
+    color: #FFF;
+}
 
+/*======================================================================================================================
 
+ =====================================================================================================================*/
 
 footer .glyphicon {
     font-size: 20px;

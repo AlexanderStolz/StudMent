@@ -6,3 +6,8 @@ function getSelectSubject(){
     document.getElementById("sub").innerHTML = index;
 }
 getSelectSubject();
+
+
+function getSubject() {
+    document.getElementById("selectSubject").value = "Dein Studiengang";
+}
