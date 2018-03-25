@@ -1,13 +1,27 @@
+
 /**
  *
  */
 function getSelectSubject(){
-    var index = document.getElementById("subjectList").value ;
-    document.getElementById("sub").innerHTML = index;
+    index = document.getElementById("subjectList").value;
 }
-getSelectSubject();
 
 
-function getSubject() {
-    document.getElementById("selectSubject").value = "Dein Studiengang";
+
+function getTable() {
+    var input, filter, table, tr, td, i;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("searchMentorTable");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+            if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
 }

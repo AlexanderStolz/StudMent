@@ -10,11 +10,11 @@
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/main.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" media="screen"/>
     <script type="text/javascript" src="js/main.js"></script>
 
 </head>
-<body id="myPage" data-spy="scroll"  data-offset="60">
+<body id="myPage" data-spy="scroll" data-offset="60">
 
 
 <div class="jumbotron text-center">
@@ -23,98 +23,99 @@
 </div>
 
 
-    <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
-        <!-- Indicators -->
-        <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-        </ol>
+<div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
 
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner" role="listbox">
-            <div class="item active">
-                <h4>Finde gute Nachhilfelehrer aus deiner Nähe</h4>
-            </div>
-            <div class="item">
-                <h4>Probleme mit Mathe? Einfach einen Mentor kontaktieren</h4>
-            </div>
-            <div class="item">
-                <h4>Test test</h4>
-            </div>
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <h4>Finde gute Nachhilfelehrer aus deiner Nähe</h4>
         </div>
-
-        <!-- Left and right controls -->
-        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
+        <div class="item">
+            <h4>Probleme mit Mathe? Einfach einen Mentor kontaktieren</h4>
+        </div>
+        <div class="item">
+            <h4>Wenn du selbst ein Mentor werden willst, schreib uns einfach eine Mail an test@test.de</h4>
+        </div>
     </div>
 
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
 
 
-    <!-- Container (Portfolio Section) -->
-    <div id="boxOne" class="container-fluid slide bg-grey text-center">
+<!-- Container (Portfolio Section) -->
+<div id="boxOne" class="container-fluid slide bg-grey text-center">
 
-            <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="collapse" data-target="#createAppointment" aria-haspopup="true" aria-expanded="false" id="quesBtn">
-                Vereinbare einen Termin bei einem Nachhilfelehrer!
-            </button>
+    <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="collapse"
+            data-target="#createAppointment" aria-haspopup="true" aria-expanded="false" id="quesBtn">
+        <h2>VEREINBARE EINEN TERMIN!</h2>
+    </button>
 
-        <div id="createAppointment" class="collapse">
-            <h2>Zunächst benötigen  deine Daten</h2>
-             Vorname:  <input type="text" id="vorName">
-             Nachname: <input type="text" id="nachName" >
-             PLZ: <input type="text" id="plz">
-             Stadt: <input type="text" id="stadt">
-            <hr>
-            <h2>Für welches Fach benötigst du Nachhilfe?</h2>
-            Studiengang:
-            <select id="selectSubject" >
-                <option value=" "> </option>
-                <option value="Mathe">Mathe</option>
-                <option value="BWL">BWL</option>
-                <option value="Informatik">Informatik</option>
-                <option value="Bauingenieur">Bauingenieur</option>
-            </select>
-
-            <div id="searchMentor">
-                <p id="demo"></p>
-                <table id="customers">
-                    <tr>
-                        <th>Name</th>
-                        <th>Fächer</th>
-                        <th>Kontaktieren</th>
-                    </tr>
-                    <tr>
-                        <td>Max Mustermann</td>
-                        <td>Informatik | BWL </td>
-                        <td>x</td>
-                    </tr>
-
-                </table>
-            </div>
+    <div id="createAppointment" class="collapse">
+        <input type="text" id="myInput" onkeyup="getTable()" placeholder="Filter dein Fach!" title="Eingabe">
+        <div id="searchMentor">
+            <table id="searchMentorTable">
+                <tr>
+                    <th>Fach</th>
+                    <th>Name</th>
+                </tr>
+                <tr>
+                    <td>Informatik | BWL</td>
+                    <td>Max Mustermann</td>
+                </tr>
+                <tr>
+                    <td>Mathe</td>
+                    <td>Max Mustermann</td>
+                </tr>
+                <tr>
+                    <td>Informatik</td>
+                    <td>Max Mustermann</td>
+                </tr>
+                <tr>
+                    <td>BWL</td>
+                    <td>Max Mustermann</td>
+                </tr>
+            </table>
         </div>
-
-
-         <p id="sub" class="selectedElement"></p>
+        <div id="filterBox">
+            Ausgabe der Mentoren Information
         </div>
-
-
+        <div id="searchMentorUserData">
+            <h3>Deine Daten:</h3>
+            <input type="text" class="inputUserData" id="vorName" placeholder="Vorname">
+            <input type="text" class="inputUserData" id="nachName" placeholder="Nachname">
+            <input type="text" class="inputUserData" id="plz" placeholder="Postleitzahl">
+            <input type="text" class="inputUserData" id="stadt" placeholder="Stadt">
+            <input type="text" class="inputUserData" id="eMail" placeholder="E-Mail Adresse">
+        </div>
     </div>
+</div>
 
 
-    <footer class="container-fluid text-center">
+</div>
 
 
-        <a href="index.html" title="Wieder zum Anfang">
-            <span class="glyphicon glyphicon-chevron-up"></span>
-        </a>
-        <a href="index.html" title="Wieder zum Anfang">StudMent</a>
-    </footer>
+<footer class="container-fluid text-center">
+
+
+    <a href="index.html" title="Wieder zum Anfang">
+        <span class="glyphicon glyphicon-chevron-up"></span>
+    </a>
+    <a href="index.html" title="Wieder zum Anfang">StudMent</a>
+</footer>
 
 
 </body>
