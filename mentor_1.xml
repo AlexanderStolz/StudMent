@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<mentor>
+    <vorname>Mentor</vorname>
+    <name>1</name>
+    <email>mentor1@mentoren.de</email>
+    <fach>
+        <title>Informatik</title>
+        <zeit>
+            <montag>
+                <von>10</von>
+                <bis>14</bis>
+            </montag>
+            <mittwoch>
+                <von>13</von>
+                <bis>20</bis>
+            </mittwoch>
+        </zeit>
+    </fach>
+    <fach>
+        <title>Mathematik</title>
+        <zeit>
+            <dienstag>
+                <von>10</von>
+                <bis>16</bis>
+            </dienstag>
+        </zeit>
+    </fach>
+</mentor>

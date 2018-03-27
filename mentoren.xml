@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<response>
+    <mentor>
+        <name>Mentor1</name>
+        <id>1</id>
+        <fach>Informatik</fach>
+        <fach>Mathematik</fach>
+    </mentor>
+    <mentor>
+        <name>Mentor2</name>
+        <id>2</id>
+        <fach>Informatik / BWL</fach>
+        <fach>BWL</fach>
+    </mentor>
+</response>

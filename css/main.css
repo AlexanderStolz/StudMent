@@ -60,7 +60,7 @@ h4 {
     background-color: #FFF;
 }
 
-#searchMentorTable td, #searchMentorTable th {
+#searchMentorTable td, #searchMentorTable th, .detailTimeTable td, .detailTimeTable th{
     border: 1px solid #000;
     padding: 8px;
 
@@ -210,6 +210,37 @@ h4 {
 #quesBtn{
     background: #9FAA22;
     color: #000000;
+}
+
+#detailContainer{
+    position: relative;
+}
+
+.detailTable{
+    width: 80%;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+.detailTimeTable{
+    width: 80%;
+    margin: auto;
+    table-layout: fixed;
+}
+
+.scndTh{
+    background-color:rgba(255, 255, 255, 0.5);
+}
+
+.abstand30{
+    height: 30px;
+}
+
+#sendBtn{
+    position: absolute;
+    right:  10%;
+    top: 10px;
+    padding:  12px;
 }
 
 /*======================================================================================================================

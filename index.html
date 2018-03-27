@@ -14,7 +14,7 @@
     <script type="text/javascript" src="js/main.js"></script>
 
 </head>
-<body id="myPage" data-spy="scroll" data-offset="60">
+<body id="myPage" data-spy="scroll" data-offset="60" onload="getMentors()">
 
 
 <div class="jumbotron text-center">
@@ -60,38 +60,65 @@
 <div id="boxOne" class="container-fluid slide bg-grey text-center">
 
     <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="collapse"
-            data-target="#createAppointment" aria-haspopup="true" aria-expanded="false" id="quesBtn">
+            data-target="#createAppointment" aria-haspopup="true" aria-expanded="false" id="quesBtn" >
         <h2>VEREINBARE EINEN TERMIN!</h2>
     </button>
 
     <div id="createAppointment" class="collapse">
         <input type="text" id="myInput" onkeyup="getTable()" placeholder="Filter dein Fach!" title="Eingabe">
         <div id="searchMentor">
-            <table id="searchMentorTable">
+            <table id="searchMentorTable" >
                 <tr>
                     <th>Fach</th>
                     <th>Name</th>
-                </tr>
-                <tr>
-                    <td>Informatik | BWL</td>
-                    <td>Max Mustermann</td>
-                </tr>
-                <tr>
-                    <td>Mathe</td>
-                    <td>Max Mustermann</td>
-                </tr>
-                <tr>
-                    <td>Informatik</td>
-                    <td>Max Mustermann</td>
-                </tr>
-                <tr>
-                    <td>BWL</td>
-                    <td>Max Mustermann</td>
                 </tr>
             </table>
         </div>
         <div id="filterBox">
             Ausgabe der Mentoren Information
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="collapse"
+                    data-target="#detailContainer" aria-haspopup="true" aria-expanded="false" id="detailBtn"
+                    style="display: none">
+                <h2>details</h2>
+            </button>
+            <div id="detailContainer" class="collapse">
+                <table class="detailTable">
+                    <tr>
+                        <th>Name:</th>
+                        <td id="detailName"></td>
+                    </tr>
+                    <tr>
+                        <th>E-Mail:</th>
+                        <td id="detailEmail"></td>
+                    </tr>
+                    <tr>
+                        <th>Fach:</th>
+                        <td id="detailFach"></td>
+                    </tr>
+                </table>
+                <button  onclick="sendMail()" id="sendBtn">Kontaktieren</button>
+                <table class="detailTimeTable">
+                    <tr>
+                        <th>Montag</th>
+                        <th class="scndTh">Dienstag</th>
+                        <th>Mittwoch</th>
+                        <th class="scndTh">Donnerstag</th>
+                        <th>Freitag</th>
+                        <th class="scndTh">Samstag</th>
+                        <th>Sonntag</th>
+                    </tr>
+                    <tr>
+                        <td id="detailMontag"></td>
+                        <td id="detailDienstag" class="scndTh"></td>
+                        <td id="detailMittwoch"></td>
+                        <td id="detailDonnerstag" class="scndTh"></td>
+                        <td id="detailFreitag"></td>
+                        <td id="detailSamstag" class="scndTh"></td>
+                        <td id="detailSonntag"></td>
+                    </tr>
+                </table>
+                <div class="abstand30"></div>
+            </div>
         </div>
         <div id="searchMentorUserData">
             <h3>Deine Daten:</h3>
