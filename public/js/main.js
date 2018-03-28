@@ -189,3 +189,17 @@ function sendMail() {
 
     window.location.href = link;
 }
+
+function getUhr() {
+    console.log("bitton pressed");
+    createXMLHttpRequest();
+    var url = "1";
+    xmlHttp.open("GET", url, true);
+    xmlHttp.onreadystatechange = test;
+    xmlHttp.send(null);
+}
+
+function test() {
+    console.log("einleerertext");
+    console.log("2"+xmlHttp.response.toString());
+}
