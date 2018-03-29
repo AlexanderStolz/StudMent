@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin-Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/main.css" media="screen"/>
+    <script type="text/javascript" src="js/main.js"></script>
+</head>
+<body onload="document.getElementById('id01').style.display='block'">
+    <div id="id01" class="modal">
+                <div id="LoginContainer">
+                <input type="text" placeholder="Benutzername" name="uName" required>
+                <input type="password" placeholder="Passwort" name="uPassword" required>
+                <button type="submit" onclick="adminLogin()">Login</button>
+            </div>
+        </div>
+
+<div class="container-fluid slide bg-grey text-center">
+    <h1>Verwaltungsseite von StudMent</h1>
+
+    <div id="MentorAnlegen">
+        <h3>Mentor anlegen</h3>
+        <input type="text" class="inputUserData" id="name" placeholder="Vor-, Nachname">
+        <input type="text" class="inputUserData" id="faeher" placeholder="Fächer">
+          <button  onclick="createMentor()" class="btn btn-secondary dropdown-toggle sendBtn">Mentor anlegen</button>
+        <hr>
+        Mentoren in der Datenbank:
+        <br>
+        <table class="detailTable">
+            <tr>
+                <th>Name:</th>
+                <td id="detailName"></td>
+            </tr>
+            <tr>
+                <th>E-Mail:</th>
+                <td id="detailEmail"></td>
+            </tr>
+            <tr>
+                <th>Fach:</th>
+                <td id="detailFach"></td>
+            </tr>
+        </table>
+    </div>
+
+
+</div>
+</body>
+</html>

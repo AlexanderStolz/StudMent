@@ -61,8 +61,33 @@
 
     <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="collapse"
             data-target="#createAppointment" aria-haspopup="true" aria-expanded="false" id="quesBtn" >
-        <h2>VEREINBARE EINEN TERMIN!</h2>
-    </button>
+        VEREINBARE EINEN TERMIN!
+    </button><br>
+    <p data-toggle="collapse" id="appQues"  data-target="#applicationBody" aria-haspopup="true" aria-expanded="false">
+        Oder willst du dich lieber als Mentor bewerben?</p>
+
+    <div id="applicationBody" class="collapse text-center">
+        <h3>Schreib uns eine Bewerbung</h3>
+        <input type="text" class="inputUserData" id="AppVorName" placeholder="Vorname">
+        <input type="text" class="inputUserData" id="AppNachName" placeholder="Nachname"><br> <br>
+        <input type="text" class="inputUserData" id="AppPlz" placeholder="Postleitzahl">
+        <input type="text" class="inputUserData" id="AppStadt" placeholder="Stadt"><br> <br>
+        <input type="text" class="inputUserData" id="AppEMail" placeholder="Deine E-Mail Adresse">
+        <input type="text" class="inputUserData" id="AppTel" placeholder="Deine Tel. Nummer">
+        <br>
+        <hr>
+        <input type="text" class="inputUserData" id="AppStudiengang" placeholder="Dein Studiengang">
+        <input type="text" class="inputUserData" id="AppFaecher" placeholder="Deine Fächer">
+        <br>
+        <hr>
+        Hier kannst du einen kurzen Bewerbungstext schreiben.<br>
+        <textarea rows="4" cols="40">
+
+        </textarea>
+        <br>
+        <button  onclick="sendApplication()" class="btn btn-secondary dropdown-toggle sendBtn">Bewerbung versenden!</button>
+    </div>
+
 
     <div id="createAppointment" class="collapse">
         <input type="text" id="myInput" onkeyup="getTable()" placeholder="Filter dein Fach!" title="Eingabe">
@@ -75,11 +100,9 @@
             </table>
         </div>
         <div id="filterBox">
-            Ausgabe der Mentoren Information
             <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="collapse"
                     data-target="#detailContainer" aria-haspopup="true" aria-expanded="false" id="detailBtn"
-                    style="display: none">
-                <h2>details</h2>
+                    style="display: none">details
             </button>
             <div id="detailContainer" class="collapse">
                 <table class="detailTable">
@@ -96,7 +119,6 @@
                         <td id="detailFach"></td>
                     </tr>
                 </table>
-                <button  onclick="getUhr()" id="sendBtn">Kontaktieren</button>
                 <table class="detailTimeTable">
                     <tr>
                         <th>Montag</th>
@@ -127,13 +149,44 @@
             <input type="text" class="inputUserData" id="plz" placeholder="Postleitzahl">
             <input type="text" class="inputUserData" id="stadt" placeholder="Stadt">
             <input type="text" class="inputUserData" id="eMail" placeholder="E-Mail Adresse">
+            <button  onclick="getUhr()" class="btn btn-secondary dropdown-toggle sendBtn">Kontaktieren</button>
+        </div>
+    </div>
+
+</div>
+<div id="news"class="container-fluid slide  text-center">
+    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+    magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+    gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
+    elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
+    eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
+    ipsum dolor sit amet.
+</div>
+<div id="news2"class="container-fluid slide  text-center">
+    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+    magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+    gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
+    elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
+    eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
+    ipsum dolor sit amet.<br>
+    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+    magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+    gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
+    elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
+    eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
+    ipsum dolor sit amet.<br><br><br>
+    <div class="row">
+        <div class="col-sm-4">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+        <div class="col-sm-4">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+        <div class="col-sm-4">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
         </div>
     </div>
 </div>
-
-
-</div>
-
 
 <footer class="container-fluid text-center">
 

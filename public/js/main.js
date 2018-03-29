@@ -203,3 +203,7 @@ function test() {
     console.log("einleerertext");
     console.log("2"+xmlHttp.response.toString());
 }
+
+function sendApplication(){
+
+}
