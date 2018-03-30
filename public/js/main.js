@@ -34,17 +34,18 @@ function getTable() {
 function fillTable() {
     if (xmlHttp.readyState == 4) {
         if (xmlHttp.status == 200) {
+            document.getElementById("Ladebalken").style.display = "none";
             var table = document.getElementById("searchMentorTable");
-            var mentoren = xmlHttp.responseXML.getElementsByTagName("mentor");
-            for (i = 0; i < mentoren.length; i++) {
-                var name = mentoren[i].getElementsByTagName("name")[0].firstChild.data;
-                var id = mentoren[i].getElementsByTagName("id")[0].firstChild.data;
-                var faecher = mentoren[i].getElementsByTagName("fach");
-                for (j = 0; j < faecher.length; j++) {
-                    var fach = faecher[j].firstChild.data;
+            var mentors = JSON.parse(xmlHttp.responseText);
+            for (mentor of mentors) {
+                var name = mentor.prename;
+                var id = mentor._id;
+                var subjects = mentor.subject;
+                for (subject of subjects) {
+                    var title = subject.title;
                     var tr = document.createElement("tr");
                     var td = document.createElement("td");
-                    var node = document.createTextNode(fach);
+                    var node = document.createTextNode(title);
                     td.appendChild(node);
                     td.setAttribute("class", "fach");
                     tr.appendChild(td);
@@ -64,70 +65,47 @@ function fillTable() {
 function fillDetailTable() {
     if (xmlHttp.readyState == 4) {
         if (xmlHttp.status == 200) {
-            var vorname = xmlHttp.responseXML.getElementsByTagName("vorname")[0].firstChild.data;
-            var name = xmlHttp.responseXML.getElementsByTagName("name")[0].firstChild.data;
-            document.getElementById("detailName").innerText = vorname + " " + name;
-            var email = xmlHttp.responseXML.getElementsByTagName("email")[0].firstChild.data;
-            document.getElementById("detailEmail").innerText = email;
-            var faecher = xmlHttp.responseXML.getElementsByTagName("fach");
-            var fach = document.getElementById("detailFach").innerText;
-            for (i = 0; i < faecher.length; i++) {
-                if (faecher[i].getElementsByTagName("title")[0].firstChild.data == fach) {
-                    var von, bis;
-                    var montag = faecher[i].getElementsByTagName("montag")[0];
-                    if(montag){
-                        von = montag.getElementsByTagName("von")[0].firstChild.data;
-                        bis = montag.getElementsByTagName("bis")[0].firstChild.data;
-                        document.getElementById("detailMontag").innerText = von + " - " + bis + "Uhr";
+            document.getElementById("Ladebalken").style.display = "none";
+            var mentor = JSON.parse(xmlHttp.responseText);
+            document.getElementById("detailName").innerText = mentor.prename + " " + mentor.name;
+            document.getElementById("detailEmail").innerText = mentor.email;
+            var subjects = mentor.subject;
+            var title = document.getElementById("detailFach").innerText;
+            for (subject of subjects) {
+                if (subject.title == title) {
+                    if (subject.monday) {
+                        document.getElementById("detailMontag").innerText = subject.monday + "Uhr";
                     } else {
                         document.getElementById("detailMontag").innerText = "nicht verfügbar";
                     }
-                    var diensatg = faecher[i].getElementsByTagName("dienstag")[0];
-                    if(diensatg){
-                        von = diensatg.getElementsByTagName("von")[0].firstChild.data;
-                        bis = diensatg.getElementsByTagName("bis")[0].firstChild.data;
-                        document.getElementById("detailDienstag").innerText = von + " - " + bis + "Uhr";
-                    }else {
+                    if (subject.tuesday) {
+                        document.getElementById("detailDienstag").innerText = subject.tuesday + "Uhr";
+                    } else {
                         document.getElementById("detailDienstag").innerText = "nicht verfügbar";
                     }
-                    var mittwoch = faecher[i].getElementsByTagName("mittwoch")[0];
-                    if(mittwoch){
-                        von = mittwoch.getElementsByTagName("von")[0].firstChild.data;
-                        bis = mittwoch.getElementsByTagName("bis")[0].firstChild.data;
-                        document.getElementById("detailMittwoch").innerText = von + " - " + bis + "Uhr";
-                    }else {
+                    if (subject.wednesday) {
+                        document.getElementById("detailMittwoch").innerText = subject.wednesday + "Uhr";
+                    } else {
                         document.getElementById("detailMittwoch").innerText = "nicht verfügbar";
                     }
-                    var donnerstag = faecher[i].getElementsByTagName("donnerstag")[0];
-                    if(donnerstag){
-                        von = donnerstag.getElementsByTagName("von")[0].firstChild.data;
-                        bis = donnerstag.getElementsByTagName("bis")[0].firstChild.data;
-                        document.getElementById("detailDonnerstag").innerText = von + " - " + bis + "Uhr";
-                    }else {
+                    if (subject.thursday) {
+                        document.getElementById("detailDonnerstag").innerText = subject.thursday + "Uhr";
+                    } else {
                         document.getElementById("detailDonnerstag").innerText = "nicht verfügbar";
                     }
-                    var freitag = faecher[i].getElementsByTagName("mittwoch")[0];
-                    if(freitag){
-                        von = freitag.getElementsByTagName("von")[0].firstChild.data;
-                        bis = freitag.getElementsByTagName("bis")[0].firstChild.data;
-                        document.getElementById("detailFreitag").innerText = von + " - " + bis + "Uhr";
-                    }else {
+                    if (subject.friday) {
+                        document.getElementById("detailFreitag").innerText = subject.friday + "Uhr";
+                    } else {
                         document.getElementById("detailFreitag").innerText = "nicht verfügbar";
                     }
-                    var samstag = faecher[i].getElementsByTagName("samstag")[0];
-                    if(samstag){
-                        von = samstag.getElementsByTagName("von")[0].firstChild.data;
-                        bis = samstag.getElementsByTagName("bis")[0].firstChild.data;
-                        document.getElementById("detailSamstag").innerText = von + " - " + bis + "Uhr";
-                    }else {
+                    if (subject.saturday) {
+                        document.getElementById("detailSamstag").innerText = subject.saturday + "Uhr";
+                    } else {
                         document.getElementById("detailSamstag").innerText = "nicht verfügbar";
                     }
-                    var sonntag = faecher[i].getElementsByTagName("sonntag")[0];
-                    if(sonntag){
-                        von = sonntag.getElementsByTagName("von")[0].firstChild.data;
-                        bis = sonntag.getElementsByTagName("bis")[0].firstChild.data;
-                        document.getElementById("detailSonntag").innerText = von + " - " + bis + "Uhr";
-                    }else {
+                    if (subject.sunday) {
+                        document.getElementById("detailSonntag").innerText = subject.sunday + "Uhr";
+                    } else {
                         document.getElementById("detailSonntag").innerText = "nicht verfügbar";
                     }
                 }
@@ -138,10 +116,11 @@ function fillDetailTable() {
 
 function getMentors() {
     createXMLHttpRequest();
-    var url = "mentoren.xml?timestamp=" + new Date().getTime();
+    var url = "mentors?timestamp=" + new Date().getTime();
     xmlHttp.open("GET", url, true);
     xmlHttp.onreadystatechange = fillTable;
     xmlHttp.send(null);
+    document.getElementById("Ladebalken").style.display = "block";
 }
 
 function getMentor() {
@@ -149,17 +128,31 @@ function getMentor() {
         var parent = $(event.srcElement).parent();
         var id = parent.attr('mid');
         var fach = parent.children(".fach").text();
-        var isSame = fach == document.getElementById("detailFach").innerText;
+        var isSame = (fach == document.getElementById("detailFach").innerText);
         document.getElementById("detailFach").innerText = fach;
-
-        createXMLHttpRequest();
-        var url = "mentor_" + id + ".xml?timestamp= " + new Date().getTime();
-        xmlHttp.open("GET", url, true);
-        xmlHttp.onreadystatechange = fillDetailTable;
-        xmlHttp.send(null);
 
         if (!$('#detailContainer').hasClass('collapse in') || isSame) {
             $('#detailBtn').click();
+        }
+        if (!($('#detailContainer').hasClass('collapse in') && isSame)) {
+            createXMLHttpRequest();
+            var url = "mentor?_id=" + id + "&timestamp= " + new Date().getTime();
+            xmlHttp.open("GET", url, true);
+            xmlHttp.onreadystatechange = fillDetailTable;
+            xmlHttp.send(null);
+            document.getElementById("Ladebalken").style.display = "block";
+        }
+    }
+}
+
+function toggleView(user) {
+    if (user == 'user') {
+        if ($('#applicationBody').hasClass('collapse in')) {
+            $('#appQues').click();
+        }
+    } else if (user == 'mentor') {
+        if ($('#createAppointment').hasClass('collapse in')) {
+            $('#quesBtn').click();
         }
     }
 }
@@ -190,20 +183,25 @@ function sendMail() {
     window.location.href = link;
 }
 
-function getUhr() {
-    console.log("bitton pressed");
+function login() {
+    var uname = document.getElementById("loguname").value;
+    var password = document.getElementById("logupassword").value;
     createXMLHttpRequest();
-    var url = "1";
+    var url = "login?name="+uname+"&password="+password+"&timestamp=" + new Date().getTime();
     xmlHttp.open("GET", url, true);
-    xmlHttp.onreadystatechange = test;
+    xmlHttp.onreadystatechange = function () {
+        // document.getElementById("Ladebalken").style.display = "none";
+        // console.log(xmlHttp.response + "fffffffffffffffff");
+        // window.open("about:blank", "", "blank").document.write(xmlHttp.response);
+    };
     xmlHttp.send(null);
+    document.getElementById("Ladebalken").style.display = "block";
 }
 
-function test() {
-    console.log("einleerertext");
-    console.log("2"+xmlHttp.response.toString());
+function sendApplication() {
+
 }
 
-function sendApplication(){
-
+function setBlack() {
+    event.srcElement.style.borderColor = "lightgray";
 }

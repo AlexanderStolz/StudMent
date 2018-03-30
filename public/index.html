@@ -16,6 +16,19 @@
 </head>
 <body id="myPage" data-spy="scroll" data-offset="60" onload="getMentors()">
 
+<div id="Ladebalken">
+    <img alt="" src="progressbar.gif"/><br/>
+    Daten werden geladen ...
+</div>
+
+<div id="id01" class="modal">
+    <form id="LoginForm" onsubmit="login()">
+        <input type="text" placeholder="Benutzername" id="loguname" name="uName" required>
+        <input type="password" placeholder="Passwort" id="logupassword" name="uPassword" required>
+        <button type="submit" >Login</button>
+        <button type="button" onclick="document.getElementById('id01').style.display='none'">Abbrechen</button>
+    </form>
+</div>
 
 <div class="jumbotron text-center">
     <h1>StudMent</h1>
@@ -59,11 +72,13 @@
 <!-- Container (Portfolio Section) -->
 <div id="boxOne" class="container-fluid slide bg-grey text-center">
 
-    <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="collapse"
-            data-target="#createAppointment" aria-haspopup="true" aria-expanded="false" id="quesBtn" >
+    <button onclick="toggleView('user')" class="btn btn-secondary dropdown-toggle" type="button" data-toggle="collapse"
+            data-target="#createAppointment" aria-haspopup="true" aria-expanded="false" id="quesBtn">
         VEREINBARE EINEN TERMIN!
-    </button><br>
-    <p data-toggle="collapse" id="appQues"  data-target="#applicationBody" aria-haspopup="true" aria-expanded="false">
+    </button>
+    <br>
+    <p onclick="toggleView('mentor')" data-toggle="collapse" id="appQues" data-target="#applicationBody"
+       aria-haspopup="true" aria-expanded="false">
         Oder willst du dich lieber als Mentor bewerben?</p>
 
     <div id="applicationBody" class="collapse text-center">
@@ -85,14 +100,15 @@
 
         </textarea>
         <br>
-        <button  onclick="sendApplication()" class="btn btn-secondary dropdown-toggle sendBtn">Bewerbung versenden!</button>
+        <button onclick="sendApplication()" class="btn btn-secondary dropdown-toggle sendBtn">Bewerbung versenden!
+        </button>
     </div>
 
 
     <div id="createAppointment" class="collapse">
         <input type="text" id="myInput" onkeyup="getTable()" placeholder="Filter dein Fach!" title="Eingabe">
         <div id="searchMentor">
-            <table id="searchMentorTable" >
+            <table id="searchMentorTable">
                 <tr>
                     <th>Fach</th>
                     <th>Name</th>
@@ -101,18 +117,22 @@
         </div>
         <div id="filterBox">
             <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="collapse"
-                    data-target="#detailContainer" aria-haspopup="true" aria-expanded="false" id="detailBtn"
-                    style="display: none">details
+                    data-target="#detailContainer" id="detailBtn" style="display: none">
+                details
             </button>
             <div id="detailContainer" class="collapse">
                 <table class="detailTable">
                     <tr>
                         <th>Name:</th>
                         <td id="detailName"></td>
+                        <th>PLZ:</th>
+                        <td id="detailPostcode"></td>
                     </tr>
                     <tr>
                         <th>E-Mail:</th>
                         <td id="detailEmail"></td>
+                        <th>Ort:</th>
+                        <td id="detailCity"></td>
                     </tr>
                     <tr>
                         <th>Fach:</th>
@@ -142,19 +162,19 @@
                 <div class="abstand30"></div>
             </div>
         </div>
-        <div id="searchMentorUserData">
+        <form id="searchMentorUserData" onsubmit="sendMail()">
             <h3>Deine Daten:</h3>
-            <input type="text" class="inputUserData" id="vorName" placeholder="Vorname">
-            <input type="text" class="inputUserData" id="nachName" placeholder="Nachname">
-            <input type="text" class="inputUserData" id="plz" placeholder="Postleitzahl">
-            <input type="text" class="inputUserData" id="stadt" placeholder="Stadt">
-            <input type="text" class="inputUserData" id="eMail" placeholder="E-Mail Adresse">
-            <button  onclick="getUhr()" class="btn btn-secondary dropdown-toggle sendBtn">Kontaktieren</button>
-        </div>
+            <input type="text" class="inputUserData" id="vorName" placeholder="Vorname" required>
+            <input type="text" class="inputUserData" id="nachName" placeholder="Nachname" required>
+            <input type="text" class="inputUserData" id="plz" placeholder="Postleitzahl" required>
+            <input type="text" class="inputUserData" id="stadt" placeholder="Stadt" required>
+            <input type="text" class="inputUserData" id="eMail" placeholder="E-Mail Adresse" required>
+            <button type="submit" class="btn btn-secondary dropdown-toggle sendBtn">Kontaktieren</button>
+        </form>
     </div>
 
 </div>
-<div id="news"class="container-fluid slide  text-center">
+<div id="news" class="container-fluid slide  text-center">
     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
     magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
     gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
@@ -162,7 +182,7 @@
     eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
     ipsum dolor sit amet.
 </div>
-<div id="news2"class="container-fluid slide  text-center">
+<div id="news2" class="container-fluid slide  text-center">
     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
     magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
     gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
@@ -177,24 +197,30 @@
     ipsum dolor sit amet.<br><br><br>
     <div class="row">
         <div class="col-sm-4">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua.</p>
         </div>
         <div class="col-sm-4">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua.</p>
         </div>
         <div class="col-sm-4">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua.</p>
         </div>
     </div>
 </div>
 
 <footer class="container-fluid text-center">
-
-
+    <p>
+        <a onclick="document.getElementById('id01').style.display='block'">Administration</a>
+    </p>
     <a href="index.html" title="Wieder zum Anfang">
         <span class="glyphicon glyphicon-chevron-up"></span>
     </a>
     <a href="index.html" title="Wieder zum Anfang">StudMent</a>
+
+
 </footer>
 
 

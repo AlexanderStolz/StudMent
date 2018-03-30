@@ -6,53 +6,31 @@ var express = require('express')
 
 server.listen(conf.port);
 
+require('./DBAccess').initDB();
+
 app.use(express.static(__dirname + '/../public'));
 
 app.get('/', function (req, res) {
     res.sendfile(__dirname + '/../public/index.html');
 });
 
-app.get('/1/', function(req, res){
-    res.send("leeererStriiing");
+app.get('/mentors', function(req, res){
+    require('./DBAccess').getMentors(function (dbres) {
+        res.send(JSON.stringify(dbres));
+    });
 });
 
-var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost:27017/";
+app.get('/mentor', function (req, res) {
+    require('./DBAccess').getMentorById(req.query._id, function (dbres) {
+        res.send(JSON.stringify(dbres));
+    });
+});
 
-MongoClient.connect(url, function (err, db) {
-    if(err) throw err;
-    var dbo = db.db("mydb");
-    dbo.createCollection("mentors", function (err, res) {
-        if(err)throw err;
-        console.log("Collection created!");
-        db.close();
+app.get('/login', function (req, res) {
+    require('./DBAccess').checkUser(req.query.name,req.query.password,function () {
+        res.sendFile(require('path').resolve(__dirname + '/../private/adminPage.html'));
     })
-
 });
 
-MongoClient.connect(url, function (err, db) {
-    if(err) throw err;
-    var dbo = db.db("mydb");
-    var myobj = obj;
-    dbo.collection("mentors").insertOne(myobj, function(err,res){
-        if(err) throw err;
-        console.log("Element added!");
-        db.close();
-    })
-
-});
-
-
-
-// Websocket
-// io.sockets.on('connection', function (socket) {
-//     // der Client ist verbunden
-//     socket.emit('chat', { zeit: new Date(), text: 'Du bist nun mit dem Server verbunden!' });
-//     // wenn ein Benutzer einen Text senden
-//     socket.on('chat', function (data) {
-//         // so wird dieser Text an alle anderen Benutzer gesendet
-//         io.sockets.emit('chat', { zeit: new Date(), name: data.name || 'Anonym', text: data.text });
-//     });
-// });
-
+//require('./DBAccess').insertMentor({name:"ich", email:"hoho@ho.ho"});
 console.log('Der Server läuft nun unter http://127.0.0.1:' + conf.port + '/');
