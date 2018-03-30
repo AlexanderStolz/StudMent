@@ -205,8 +205,12 @@ h4 {
     margin-top: 10px;
     width: 100%;
     height: auto;
-    background: #BBBF8A;
+    background: #FFF;
     padding: 10px;
+}
+
+footer{
+    background: #BBBF8A;
 }
 
 #subjectList {
