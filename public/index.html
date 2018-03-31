@@ -22,10 +22,10 @@
 </div>
 
 <div id="id01" class="modal">
-    <form id="LoginForm" onsubmit="login()">
-        <input type="text" placeholder="Benutzername" id="loguname" name="uName" required>
-        <input type="password" placeholder="Passwort" id="logupassword" name="uPassword" required>
-        <button type="submit" >Login</button>
+    <form id="LoginForm">
+        <input type="text" placeholder="Benutzername" id="loguname" required>
+        <input type="password" placeholder="Passwort" id="logupassword" required>
+        <button type="button" onclick="login()">Login</button>
         <button type="button" onclick="document.getElementById('id01').style.display='none'">Abbrechen</button>
     </form>
 </div>
@@ -100,7 +100,7 @@
 
         </textarea>
         <br>
-        <button onclick="sendApplication()" class="btn btn-secondary dropdown-toggle sendBtn">Bewerbung versenden!
+        <button type="button" onclick="sendApplication()" class="btn btn-secondary dropdown-toggle sendBtn">Bewerbung versenden!
         </button>
     </div>
 
@@ -196,7 +196,7 @@
             <p>Fragen? Sende uns einfach eine Mail an <a href="#">test@test.de</a></p>
         </div>
         <div class="col-sm-4">
-            <p>Du willst selbst Mentor werden?   <p onclick="toggleView('mentor')" data-toggle="collapse" id="appQues" data-target="#applicationBody"
+            <p>Du willst selbst Mentor werden?   <p onclick="toggleView('mentor')" data-toggle="collapse" id="appQues2" data-target="#applicationBody"
                                                         aria-haspopup="true" aria-expanded="false">
             Dann klick hier!</p></p>
         </div>

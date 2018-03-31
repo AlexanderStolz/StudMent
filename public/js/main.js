@@ -116,7 +116,7 @@ function fillDetailTable() {
 
 function getMentors() {
     createXMLHttpRequest();
-    var url = "mentors?timestamp=" + new Date().getTime();
+    var url = "mentors/get?timestamp=" + new Date().getTime();
     xmlHttp.open("GET", url, true);
     xmlHttp.onreadystatechange = fillTable;
     xmlHttp.send(null);
@@ -136,7 +136,7 @@ function getMentor() {
         }
         if (!($('#detailContainer').hasClass('collapse in') && isSame)) {
             createXMLHttpRequest();
-            var url = "mentor?_id=" + id + "&timestamp= " + new Date().getTime();
+            var url = "mentor/get?_id=" + id + "&timestamp= " + new Date().getTime();
             xmlHttp.open("GET", url, true);
             xmlHttp.onreadystatechange = fillDetailTable;
             xmlHttp.send(null);
@@ -187,19 +187,61 @@ function login() {
     var uname = document.getElementById("loguname").value;
     var password = document.getElementById("logupassword").value;
     createXMLHttpRequest();
-    var url = "login?name="+uname+"&password="+password+"&timestamp=" + new Date().getTime();
+    var url = "login?name=" + uname + "&password=" + password + "&timestamp=" + new Date().getTime();
     xmlHttp.open("GET", url, true);
     xmlHttp.onreadystatechange = function () {
-        // document.getElementById("Ladebalken").style.display = "none";
-        // console.log(xmlHttp.response + "fffffffffffffffff");
-        // window.open("about:blank", "", "blank").document.write(xmlHttp.response);
+        if (xmlHttp.readyState === 4) {
+            if (xmlHttp.status === 200) {
+                if (xmlHttp.responseText === "true") {
+                    window.open("adminPage.html", "_self");
+                }
+            }
+        }
     };
     xmlHttp.send(null);
     document.getElementById("Ladebalken").style.display = "block";
 }
 
 function sendApplication() {
+    createXMLHttpRequest();
+    var url = "applicant/put?name="
+        + document.getElementById("AppNachName").value
+        + "&prename="
+        + document.getElementById("AppVorName").value
+        + "&postcode="
+        + document.getElementById("AppPlz").value
+        + "&city="
+        + document.getElementById("AppStadt").value
+        + "&email="
+        + document.getElementById("AppEMail").value
+        + "&timestamp="
+        + new Date().getTime();
+    xmlHttp.open("GET", url, true);
+    xmlHttp.onreadystatechange = sendAppSubjects;
+    xmlHttp.send(null);
+    document.getElementById("Ladebalken").style.display = "block";
+}
 
+function sendAppSubjects() {
+    if (xmlHttp.readyState == 4) {
+        if (xmlHttp.status == 200) {
+            var subs = document.getElementById("AppFaecher").value.split(",");
+            for (sub of subs){
+                sub.trim();
+                var url = "applicant/put/subject?_id="
+                    + xmlHttp.responseText
+                    + "&title="
+                    + sub
+                    + "&timestamp="
+                    + new Date().getTime();
+                createXMLHttpRequest();
+                xmlHttp.open("GET", url);
+                xmlHttp.send(null);
+            }
+            document.getElementById("Ladebalken").style.display = "none";
+            $('#appQues').click();
+        }
+    }
 }
 
 function setBlack() {
